@@ -1,0 +1,10 @@
+.item-details img{
+    height: 300px;
+    width: 350px;
+    margin-bottom: 20px;
+}
+.item-details{
+    border: 2px solid gray;
+    border-radius: 5px;
+    padding: 20px;
+}
