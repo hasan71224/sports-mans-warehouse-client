@@ -1,17 +1,16 @@
 import React from 'react';
-import useItems from '../../../hook/useItems';
-import Item from '../../Item/Item';
-import './HomeItems.css'
+import useItems from '../../hook/useItems';
+import Item from '../Item/Item';
 
-const HomeItems = () => {
+const Items = () => {
     const [items, setItems] = useItems()
     return (
         <div>
-            <div className='item-container'>
+            <div className='items-container'>
                 <h1 className='d-flex justify-content-center'>Inventory Sports Items</h1>
                 <div className='home-item'>
                     {
-                        items.slice(0, 6).map(item=> <Item
+                        items.map(item=> <Item
                             key={item.id}
                             item={item}
                         >
@@ -19,13 +18,8 @@ const HomeItems = () => {
                         )
                     }
                 </div>
-                <div className='d-flex justify-content-center'>
-
-                <a href="/items">See All Items</a>
-                </div>
             </div>
         </div>
     );
-};
-
-export default HomeItems;
+ }
+export default Items;
