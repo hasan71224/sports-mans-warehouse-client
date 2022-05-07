@@ -4,9 +4,8 @@ import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
-import useToken from '../../../hook/useToken';
+// import useToken from '../../../hook/useToken';
 import { async } from '@firebase/util';
-
 
 const Register = () => {
     const [
@@ -16,7 +15,7 @@ const Register = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-    const [token] = useToken(user);
+    // const [token] = useToken(user);
     const navigate = useNavigate();
     let loadingElement;
     const navigateLogin = event => {
@@ -25,10 +24,10 @@ const Register = () => {
     if(loading || updating){
        loadingElement = <div> <p>Loading...</p> </div>
     }
-    if (token) {
-        navigate('/home')
-        // console.log('user:', user);
-    }
+    // if (token) {
+    //     navigate('/home')
+    //     // console.log('user:', user);
+    // }
 
     const handleRegister = async (event) => {
         event.preventDefault();
@@ -40,6 +39,7 @@ const Register = () => {
             await createUserWithEmailAndPassword(email, password)
             await updateProfile({ displayName: name });
             alert('Updated profile');
+            navigate('/login');
         }
     }
     return (
@@ -78,7 +78,6 @@ const Register = () => {
             {loadingElement}
             <p className='mt-3'>Already Have an Account? <span className='text-danger' style={{ cursor: "pointer" }} onClick={navigateLogin}>please Login</span> </p>
             {/* <SocialLogin></SocialLogin> */}
-            
         </div>
     );
 };
