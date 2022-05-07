@@ -30,7 +30,7 @@ const Header = () => {
                             {
                                 user && <>
                                     <Nav.Link as={Link} to='item' className='fs-5 fw-normal' style={{ color: 'black' }}>Manage Items</Nav.Link>
-                                    <Nav.Link as={Link} to='manageitem' className='fs-5 fw-normal ' style={{ color: 'black' }}>My Item</Nav.Link>
+                                    <Nav.Link as={Link} to='myItem' className='fs-5 fw-normal ' style={{ color: 'black' }}>My Item</Nav.Link>
                                     <Nav.Link as={Link} to='addItem' className='fs-5 fw-normal ' style={{ color: 'black' }}>Add Item</Nav.Link>
                                 </>
                             }

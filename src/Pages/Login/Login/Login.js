@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Spinner } from 'react-bootstrap';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
@@ -29,7 +29,12 @@ const Login = () => {
 
     let loadingElement;
     if(loading || sending){
-       loadingElement = <div> <p>Loading...</p> </div>
+        return (
+            <div style={{ height: '300px' }} className='w-100 d-flex justify-content-center align-items-center'>
+                <Spinner animation="border" />
+            </div>
+
+        );
     }
 
     // console.log(user);

@@ -1,6 +1,6 @@
 // import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import React from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Spinner } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
@@ -23,7 +23,12 @@ const Register = () => {
         navigate('/login')
     }
     if(loading || updating){
-       loadingElement = <div> <p>Loading...</p> </div>
+        return (
+            <div style={{ height: '300px' }} className='w-100 d-flex justify-content-center align-items-center'>
+                <Spinner animation="border" />
+            </div>
+
+        );
     }
     // if (token) {
     //     navigate('/home')

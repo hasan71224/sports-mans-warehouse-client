@@ -6,7 +6,7 @@ const AddItem = () => {
 
     const onSubmit = data => {
         console.log(data);
-        const url = `https://radiant-fortress-18374.herokuapp.com/service/`
+        const url = `http://localhost:5000/item`;
         fetch(url, {
             method: 'POST',
             headers: {
@@ -25,7 +25,7 @@ const AddItem = () => {
             <form className='d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>
                 <input className='mb-2' placeholder='Name' {...register("name")} />
                 <textarea input className='mb-2' placeholder='Description' {...register("description")} />
-                <input className='mb-2' placeholder='Supplier Name' type="number" {...register("supplierName")} />
+                <input className='mb-2' placeholder='Supplier Name' {...register("supplierName")} />
                 <input className='mb-2' placeholder='Quantity' type="number" {...register("quantity")} />
                 <input className='mb-2' placeholder='Price' type="number" {...register("price")} />
                 <input className='mb-2' placeholder='Photo Url' type="text" {...register("img")} />
