@@ -17,12 +17,17 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/items' element={<Items></Items>}></Route>
+        <Route path='/item' element={<Items></Items>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         {/* <Route path='/item/:itemId' element={<ItemDetails></ItemDetails>}></Route> */}
 
         <Route path='/item/:itemId' element={
+          <RequireAuth>
+            <ItemDetails></ItemDetails>
+          </RequireAuth>
+        }></Route>
+        <Route path='item/item/:itemId' element={
           <RequireAuth>
             <ItemDetails></ItemDetails>
           </RequireAuth>

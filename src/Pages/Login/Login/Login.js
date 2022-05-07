@@ -43,7 +43,7 @@ const Login = () => {
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         await signInWithEmailAndPassword(email, password);
-        navigate('/')
+        // navigate('/')
     }
     let errorElement;
     if (error) {
@@ -70,8 +70,6 @@ const Login = () => {
     return (
         <div className='w-50 mx-auto'>
             
-                <title>LogIn - Genius Car Service</title>
-            
             <h2 className='text-center mt-3 text-primary'>Please Login</h2>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -92,7 +90,7 @@ const Login = () => {
             </Form>
             {errorElement}
             {loadingElement}
-            <p className='mt-3'>New To Genius Car? <span className='text-danger' style={{ cursor: "pointer" }} onClick={navigateRegister}>Register</span> </p>
+            <p className='mt-3'>New To Warehouse? <span className='text-danger' style={{ cursor: "pointer" }} onClick={navigateRegister}>Register</span> </p>
 
             <p className='mt-3'>Forget Password? <span className='text-primary' style={{ cursor: "pointer" }} onClick={resetPassword}>Reset Password</span></p>
             <SocialLogin></SocialLogin>
