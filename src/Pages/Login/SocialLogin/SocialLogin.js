@@ -22,7 +22,9 @@ const SocialLogin = () => {
     if (loading) {
         loadingElement = <div> <p>Loading...</p> </div>
       }
+
       navigate('/')
+      
     // if (token) {
     //     navigate(from, { replace: true });
     // }
