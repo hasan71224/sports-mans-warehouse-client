@@ -14,6 +14,7 @@ const Item = ({ item }) => {
                 <p><strong>Price:</strong> {price}</p>
                 <p><strong>Quantity:</strong> {quantity}</p>
                 <p><strong>Supplier Name:</strong> {supplierName}</p>
+                <button className='btn btn-info w-50 mx-auto d-block mt-3'>Manage Stock</button>
             </div>
         </div>
     );
