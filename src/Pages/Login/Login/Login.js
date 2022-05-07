@@ -5,7 +5,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+  import 'react-toastify/dist/ReactToastify.css';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
 
@@ -14,7 +15,7 @@ const Login = () => {
     const navigate = useNavigate()
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
-
+    
     const [
         signInWithEmailAndPassword,
         user,
@@ -27,8 +28,8 @@ const Login = () => {
     // const [token] = useToken(user);
 
     let loadingElement;
-    if (loading || sending) {
-        loadingElement = <div> <p>Loading...</p> </div>
+    if(loading || sending){
+       loadingElement = <div> <p>Loading...</p> </div>
     }
 
     // console.log(user);
@@ -42,6 +43,7 @@ const Login = () => {
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         await signInWithEmailAndPassword(email, password);
+        navigate('/')
     }
     let errorElement;
     if (error) {
@@ -59,7 +61,7 @@ const Login = () => {
             await sendPasswordResetEmail(email);
             toast('Sent email');
         }
-        else {
+        else{
             toast("Please Enter Your Email Address")
         }
 
@@ -67,9 +69,9 @@ const Login = () => {
 
     return (
         <div className='w-50 mx-auto'>
-
-            <title>LogIn - Genius Car Service</title>
-
+            
+                <title>LogIn - Genius Car Service</title>
+            
             <h2 className='text-center mt-3 text-primary'>Please Login</h2>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -93,7 +95,7 @@ const Login = () => {
             <p className='mt-3'>New To Genius Car? <span className='text-danger' style={{ cursor: "pointer" }} onClick={navigateRegister}>Register</span> </p>
 
             <p className='mt-3'>Forget Password? <span className='text-primary' style={{ cursor: "pointer" }} onClick={resetPassword}>Reset Password</span></p>
-            {/* <SocialLogin></SocialLogin> */}
+            <SocialLogin></SocialLogin>
             <ToastContainer />
         </div>
     );
