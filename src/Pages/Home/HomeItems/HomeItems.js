@@ -21,7 +21,7 @@ const HomeItems = () => {
                 </div>
                 <div className='d-flex justify-content-center'>
 
-                <a href="/items">See All Items</a>
+                <a href="/item">See All Items</a>
                 </div>
             </div>
         </div>

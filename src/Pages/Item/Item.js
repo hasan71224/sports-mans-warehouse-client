@@ -1,10 +1,14 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
 import './Item.css'
 
 const Item = ({ item }) => {
+    const [user] = useAuthState(auth);
+    console.log(user);
     const {_id, img, name, description, price, quantity, supplierName } = item;
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const navigateToItemDetails = (_id) =>{
         navigate(`item/${_id}`)
@@ -17,6 +21,7 @@ const Item = ({ item }) => {
             </div>
             <div>
                 <h2>{name}</h2>
+                <p><strong>Email:</strong> {user?.email}</p>
                 <p><strong>Description:</strong> {description}</p>
                 <p><strong>Price:</strong> {price}</p>
                 <p><strong>Quantity:</strong> {quantity}</p>

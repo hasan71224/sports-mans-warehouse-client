@@ -1,10 +1,14 @@
+import userEvent from '@testing-library/user-event';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import auth from '../../firebase.init';
 import useItemDetails from '../../hook/useItemDetails';
 
 const ItemDetails = () => {
     const { itemId } = useParams();
     const [item] = useItemDetails(itemId);
+    const [user] = useAuthState(auth);
 
     const { _id, img, name, description, price, quantity, supplierName } = item;
     const navigate = useNavigate()
@@ -17,6 +21,7 @@ const ItemDetails = () => {
                 </div>
                 <div>
                     <h2>{name}</h2>
+                    <p><strong>User Email:</strong> {user?.email}</p>
                     <p><strong>Description:</strong> {description}</p>
                     <p><strong>Price:</strong> {price}</p>
                     <p><strong>Quantity:</strong> {quantity}</p>

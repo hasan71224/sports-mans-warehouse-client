@@ -42,6 +42,9 @@ const Login = () => {
     //     navigate(from, { replace: true });
     // }
 
+    if(user){
+        navigate(from, {replace:true});
+    }
 
     const handleSubmit = async event => {
         event.preventDefault();
