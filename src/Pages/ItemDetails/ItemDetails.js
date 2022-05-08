@@ -17,13 +17,19 @@ const ItemDetails = () => {
     const navigate = useNavigate()
 
 
-    const deliveredItem = id => {
+    const deliveredItem = async (id) => {
         const proceed = window.confirm("Are You Sure?");
         if (proceed) {
             const url = `https://pacific-gorge-29321.herokuapp.com/item/${id}`
-            fetch(url, {
-                method: 'PUT'
-            })
+            
+            await fetch(url, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({quantity: quantity})
+            }
+            )
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
