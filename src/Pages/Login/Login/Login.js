@@ -7,6 +7,7 @@ import auth from '../../../firebase.init';
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import useToken from '../../../hook/useToken';
 
 const Login = () => {
 
@@ -25,7 +26,7 @@ const Login = () => {
 
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
-    // const [token] = useToken(user);
+    const [token] = useToken(user);
 
     let loadingElement;
     if(loading || sending){
@@ -38,9 +39,9 @@ const Login = () => {
     }
 
     // console.log(user);
-    // if(token) {
-    //     navigate(from, { replace: true });
-    // }
+    if(token) {
+        navigate(from, { replace: true });
+    }
 
     if(user){
         navigate(from, {replace:true});
@@ -51,7 +52,7 @@ const Login = () => {
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         await signInWithEmailAndPassword(email, password);
-        // navigate('/')
+        
     }
     let errorElement;
     if (error) {

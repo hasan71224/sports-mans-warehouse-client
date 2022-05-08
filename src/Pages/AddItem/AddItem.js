@@ -9,7 +9,7 @@ const AddItem = () => {
 
     const onSubmit = data => {
         console.log(data);
-        const url = `http://localhost:5000/item`;
+        const url = `https://pacific-gorge-29321.herokuapp.com/item`;
         fetch(url, {
             method: 'POST',
             headers: {

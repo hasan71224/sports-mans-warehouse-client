@@ -3,6 +3,7 @@ import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
+import axiosPrivate from '../../api/axiosPrivate';
 // import axiosPrivate from '../../api/axiosPrivate';
 import auth from '../../firebase.init';
 import useItems from '../../hook/useItems';
@@ -16,7 +17,7 @@ const MyItem = () => {
     const handleDelete = id => {
         const proceed = window.confirm("Are You Sure?");
         if (proceed) {
-            const url = `http://localhost:5000/item/${id}`
+            const url = `https://pacific-gorge-29321.herokuapp.com/item/${id}`
             fetch(url, {
                 method: 'DELETE'
             })
@@ -32,10 +33,9 @@ const MyItem = () => {
     useEffect(() => {
         const getProducts = async() => {
             const email = user?.email;
-            const url = `http://localhost:5000/item?email=${email}`;
+            const url = `https://pacific-gorge-29321.herokuapp.com/item?email=${email}`;
             try {
-                // const { data } = await axiosPrivate.get(url);
-                const {data} = await axios.get(url)
+                const { data } = await axiosPrivate.get(url);
                 setProducts(data)
             }
             catch (error) {
@@ -55,11 +55,7 @@ const MyItem = () => {
         <>
             <div className='w-50 mx-auto my-3'>
                 <h1>Your Total Product: {products.length}</h1>
-                {/* {
-                    products.map(product => <div key={product._id}>
-                        <p>{product.email} : {product.service}</p>
-                    </div>)
-                } */}
+                
             </div>
 
             <div className='w-50 mx-auto border border-dark p-3'>

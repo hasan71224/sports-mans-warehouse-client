@@ -3,12 +3,12 @@ import social from '../../../Images/social/social.png'
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { useLocation, useNavigate } from 'react-router-dom';
-// import useToken from '../../../hook/useToken';
+import useToken from '../../../hook/useToken';
 
 const SocialLogin = () => {
 
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-    // const [token] = useToken(user)
+    const [token] = useToken(user)
     const navigate = useNavigate();
     let errorElement;
     let loadingElement;
@@ -24,9 +24,9 @@ const SocialLogin = () => {
       }
 
 
-    // if (token) {
-    //     navigate(from, { replace: true });
-    // }
+    if (token) {
+        navigate(from, { replace: true });
+    }
     if(user){
         navigate(from, {replace:true});
     }

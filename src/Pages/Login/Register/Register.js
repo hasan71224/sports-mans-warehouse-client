@@ -4,7 +4,7 @@ import { Button, Form, Spinner } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
-// import useToken from '../../../hook/useToken';
+import useToken from '../../../hook/useToken';
 import { async } from '@firebase/util';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
@@ -16,7 +16,7 @@ const Register = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-    // const [token] = useToken(user);
+    const [token] = useToken(user);
     const navigate = useNavigate();
     let loadingElement;
     const navigateLogin = event => {
@@ -30,10 +30,10 @@ const Register = () => {
 
         );
     }
-    // if (token) {
-    //     navigate('/home')
-    //     // console.log('user:', user);
-    // }
+    if (token) {
+        navigate('/home')
+        // console.log('user:', user);
+    }
 
     const handleRegister = async (event) => {
         event.preventDefault();
