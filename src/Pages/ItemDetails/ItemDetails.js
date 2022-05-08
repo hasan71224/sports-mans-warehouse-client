@@ -61,7 +61,7 @@ const ItemDetails = () => {
                         aria-describedby="basic-addon2"
                     />
                     <Button className='btn btn-info text-dark' variant="outline-secondary" id="button-addon2">
-                        Button
+                        Add Quantity
                     </Button>
                 </InputGroup>
                 </div>
